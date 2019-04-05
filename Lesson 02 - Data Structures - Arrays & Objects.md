@@ -128,7 +128,23 @@ You're going to the grocery store and decide to use an array to keep track of yo
 ### Exercise 1 answer
 
 ```javascript
-// will be updated after all homework is submitted
+const groceries = ['pop tarts', 'ramen noodles', 'chips', 'salsa', 'coffee'];
+
+groceries.push('fruit loops');
+
+groceries[4] = 'fair trade coffee'; // groceries['coffee']
+
+groceries.splice(2, 2, 'rice', 'beans')
+
+const cart = [];
+
+cart.push(groceries.pop());
+
+while(list.length > 0)
+cart.push(groceries.pop());
+
+cart.sort().reverse();
+console.log("My cart contains: ", cart.join(','));
 ```
 
 ## Objects
@@ -346,7 +362,7 @@ students.indexOf({name:'julian'}); //-1 (meaning nothing was found)
 
 ## Exercise & Homework
 
-###**Due 7/26/2016**
+###**Due 4/9/2019**
 
 1. Complete the following class challenges
   - [Exercise 1](https://github.com/ttsJavaScriptAppDevelopmentSummer16/classNotes/blob/master/Lesson%2002%20-%20Data%20Structures%20-%20Arrays%20&%20Objects.md#exercise-1)
