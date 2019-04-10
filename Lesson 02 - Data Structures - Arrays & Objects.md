@@ -288,7 +288,35 @@ var course = {
 ### Addressing Objects Answer
 
 ```javascript
-// will be updated after all homework is turned in
+ console.log(course.name);
+ console.log(course.teachers[1]);
+ console.log(course.students[0].name);
+ console.log(course.students[1].computer.type);
+ console.log(course.preReqs.equipment.laptop);
+ console.log(course.preReqs.equipment.OSOptions[1]);
+ console.log(course.preReqs.equipment.OSOptions.join(' or '));
+
+
+ //one way//
+ let i = 0;
+ const osxList = [];
+ while(i < course.students.length){
+     if(course.students[i].computer.OS === 'OSX'){
+         osxList.push(course.students[i].name);
+     }
+     i++;
+ }
+
+ console.log(osxList);
+
+ //another way to do it//
+// var list = [];
+// course.students.forEach(element => {
+//     if(element.computer.OS === 'OSX'){
+//         list.push(element.name);
+//     }
+// })
+// console.log(list);
 ```
 
  

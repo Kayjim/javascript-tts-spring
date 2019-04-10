@@ -112,8 +112,17 @@ Calculating gratutity is a repetitive task, so let's create a couple of function
 
 ```javascript
 
-Updated with answer later
-```
+const billAmount = 100.58;
+
+function gratutity(){
+    return billAmount * 0.2;  
+  }
+
+function totalWithGrat(amount){
+  return gratuity() + amount;
+}
+
+console.log("your total, including gratutity is: $" +  totalWithGrat(billAmount).toFixed(2));```
 
 ## Functions as Objects
 
@@ -223,6 +232,75 @@ Let's revisit Rock Paper Scissors...
 	- Play a game between the first two players, and the second two players
 	- Play a game between the winners of the first round.
 	- Announce the tournament winner's name "[name] is the world champion";
+
+##RPS Answer
+
+```javascript
+function getHand() {
+  return weapons[Math.floor(Math.random() * weapons.length)];
+}
+
+const player1 = {
+  name: "Chris",
+  score: 0,
+  getHand: getHand,
+};
+const player2 = {
+  name: "Jimmy",
+  score: 0,
+  getHand: getHand,
+};
+const weapons = ["rock", "paper", "scissors"];
+
+const winConditions = {
+  rock: "scissors",
+  paper: "rock",
+  scissors: "paper",
+};
+
+function playRound(playerA, playerB) {
+  const playerAWeapon = playerA.getHand();
+  const playerBWeapon = playerB.getHand();
+
+  console.log(playerA.name, "plays", playerAWeapon);
+  console.log(playerB.name, "plays", playerBWeapon);
+
+  if (playerAWeapon === playerBWeapon) {
+    // Players Tied
+    return null;
+  } else if (winConditions[playerAWeapon] === playerBWeapon) {
+    // Player One Wins
+    return playerA;
+  } else {
+    // Player Two Wins
+    return playerB;
+  }
+}
+
+const hasPlayerWon = (player, roundsToWin) => player.score >= roundsToWin;
+
+function playGame(playerA, playerB, roundsToWin) {
+  while (!(hasPlayerWon(playerA, roundsToWin) || hasPlayerWon(playerB, roundsToWin))) {
+    const winningPlayer = playRound(playerA, playerB);
+    if (winningPlayer) {
+      console.log(winningPlayer.name, "won!");
+      winningPlayer.score++;
+    } else {
+      console.log("Its a tie!");
+    }
+  }
+
+  let winner;
+  if (hasPlayerWon(playerA, roundsToWin)) {
+    winner = playerA;
+  } else {
+    winner = playerB;
+  }
+  console.log(winner.name, "wins the game!");
+}
+
+console.log(playGame(player1, player2, 5));
+```
 	
 - - - -
 

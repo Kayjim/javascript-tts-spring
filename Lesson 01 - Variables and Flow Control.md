@@ -449,12 +449,9 @@ for(var i = 0; i < 10; i++) {
 1. Read the following tutorial [JavaScript Strings](http://www.javascriptkit.com/javatutors/string4.shtml) 
 2. Join our Slack Channel
 3. Send me your GitHub username
-
 	*note:<br>when naming your GitHub repo, please use the following naming convention:`rps_aw_lm`<br>(the project name + your team's initials)*
 
-###**Due 4/09/2019:**
-
-4. Work with your partner to create a game of 'Rock Paper Scissors' that runs until one player has three wins
+4. Create a game of 'Rock Paper Scissors' that runs until one player has three wins
 
 	- Store the player names and number of wins for each player in variables
 	- Use a while loop to run the game until one player has 3 wins
