@@ -234,7 +234,7 @@ Let's revisit Rock Paper Scissors...
 	- Play a game between the winners of the first round.
 	- Announce the tournament winner's name "[name] is the world champion";
 
-##RPS Answer
+## RPS Answer
 
 ```javascript
 function getHand() {
