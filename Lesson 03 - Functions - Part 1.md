@@ -122,7 +122,8 @@ function totalWithGrat(amount){
   return gratuity() + amount;
 }
 
-console.log("your total, including gratutity is: $" +  totalWithGrat(billAmount).toFixed(2));```
+console.log("your total, including gratutity is: $" +  totalWithGrat(billAmount).toFixed(2));
+```
 
 ## Functions as Objects
 
