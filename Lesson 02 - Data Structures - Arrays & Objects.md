@@ -390,8 +390,6 @@ students.indexOf({name:'julian'}); //-1 (meaning nothing was found)
 
 ## Exercise & Homework
 
-###**Due 4/9/2019**
-
 1. Complete the following class challenges
   - [Exercise 1](https://github.com/Kayjim/javascript-tts-spring/blob/master/Lesson%2002%20-%20Data%20Structures%20-%20Arrays%20%26%20Objects.md#exercise-1)
   - [Exercise 2](https://github.com/Kayjim/javascript-tts-spring/blob/master/Lesson%2002%20-%20Data%20Structures%20-%20Arrays%20%26%20Objects.md#exercise-addressing-objects)
