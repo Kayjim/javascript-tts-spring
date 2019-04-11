@@ -294,7 +294,7 @@ Create a single object named `slideshow` that represents the data and functional
 
  - Complete the [Scope Chain & Closures](https://www.github.com/jesstelford/scope-chains-closures) Module at [NodeSchool](http://nodeschool.io/)
  	- Upload a completed screenshot to slack 
- - Complete the [Slideshow](https://github.com/ttsJavaScriptAppDevelopmentSummer16/classNotes/blob/master/Lesson%2004%20-%20Functions%20-%20Part%202.md#exercise-this) challenge
+ - Complete the [Slideshow](https://github.com/Kayjim/javascript-tts-spring/blob/master/Lesson%2004%20-%20Functions%20-%20Part%202.md#exercise-this) challenge
  	- Push the finished code to GitHub using the naming convetion: `slideshow_YOUR_TEAM_INTIALS_HERE`
  	- Paste a link to the finished code in Slack
  - Read [this](http://javascriptissexy.com/understand-javascript-closures-with-ease/) article on Scope and Closure
