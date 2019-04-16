@@ -359,7 +359,7 @@ Update after submissions.
 -->
 
 ## Homework
-- Complete Exercise #3 [Async Programming](https://github.com/ttsJavaScriptAppDevelopmentSummer16/classNotes/blob/master/Lesson%2005%20-%20Functions%20-%20Part%203.md#exercise-3-async-programming)
+- Complete Exercise #3 [Async Programming](https://github.com/Kayjim/javascript-tts-spring/blob/master/Lesson%2005%20-%20Functions%20-%20Part%203.md#exercise-3-async-programming)
 	- Create a branch off of your existing slideshow
 	- For your branch use the naming convention `async_YOUR_NAME_HERE`
 - Complete the [Functional Javascript](https://github.com/timoxley/functional-javascript-workshop) module at [NodeSchool](http://nodeschool.io/)
