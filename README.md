@@ -11,3 +11,4 @@ Each directory has example files from the class on that date.
 | 2019-04-16 | 5 | functions part 3 |
 |2019-04-18 | 6 | object orientation |
 |2019-04-23 | 7 | javascript in the browser |
+|2019-04-23 | 7 | dom manipulation and api  |
