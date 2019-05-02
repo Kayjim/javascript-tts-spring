@@ -182,8 +182,14 @@ Using jQuery:
 
 
 ```javascript
-//For pete's sake someone remind me to update these things with answers!
-
+console.log($('header'));
+console.log($('section'));
+var current = $('section.current');
+console.log(current);
+console.log(current.next());
+console.log(current.prev().find('h2'));
+console.log($('h2.highlight').closest('div'));
+console.log($('section:has(h2)'));
 ```
 
 ## jQuery Next Steps
@@ -331,7 +337,37 @@ $( "div.grandparent" ).find( "div" );
 ### Exercise Answer
 
 ```javascript
-//Send help
+$('#submit').click(function(e) {
+var name = $('#name');
+var email = $('#email');
+var phone = $('#phone');
+var message = $('#message');
+
+var required = [name, email, phone];
+for(item of required) {
+if(item.val() == '') {
+message.text('Please Fill Out Required Fields').addClass('warning');
+item.labels().addClass('warning');
+// Without jQuery UI: $(`label[for=${item.attr('id')}]`).addClass('warning');
+}
+}
+
+if($('label.warning').length == 0) {
+$('#form').remove();
+$('#pre-form > h2').text('Thanks for your feedback!');
+}
+});
+
+$('input').keyup(function(e) {
+if($(this).val() != '') {
+$(this).removeClass('warning').labels().removeClass('warning');
+// Without jQuery UI: $(`label[for=${$(this).attr('id')}]`).addClass('warning');
+}
+
+if($('label.warning').length == 0) {
+$('#message').text('').removeClass('warning');
+}
+});
 ```
 
 ### Animations
@@ -436,3 +472,66 @@ jQuery lets you do a lot with this DOM manipulation pattern, but it is not maint
 - compare to your previous Vanilla JS ToDo App
 - Add comments explaning what each jQuery method is accomplishing
 - Push to our class GitHub using the naming convention: `jQuery_ToDo_YOUR_INITIALS_HERE`
+
+
+### Homework Answer
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<link rel="stylesheet" href="style.css" />
+<title>ToDo</title>
+</head>
+<body>
+<h2>ToDo</h2>
+<ul>
+<li>item 1</li>
+<li>item 2</li>
+<li>item 3</li>
+<li id="newtodoli">
+<input type="text" id="newtodo" />
+<button id="submit">Add</button>
+</li>
+</ul>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="script.js"></script>
+</body>
+</html>
+```
+```css
+
+@keyframes disappear {
+from { opacity: 1; }
+to { opacity: 0; }
+}
+```
+```javascript
+$('#newtodo').keyup(e => e.keyCode == 13 ? $('#submit').click() : null);
+$('#submit').click(e => $('<li>').text($('#newtodo').val()).insertBefore($('#newtodo').val('').parent()));
+$('ul').on('click', 'li:not(#newtodoli)', e => $(e.target).css({'text-decoration': 'line-through', 'animation': 'disappear 1.1s'}).delay(1000).queue(n => e.target.remove()));
+
+/*
+// Explanation:
+$('#newtodo').keyup(e => // When a key is pressed in the input box:
+e.keyCode == 13          // Check if that key is the enter key.
+? $('#submit').click()   // If it is, click the button.
+: null); // Else do nothing.
+$('#submit').click(e => // When the button is clicked:
+$('<li>')                      // Create an <li> element,
+.text($('#newtodo').val()) // set its text to the value of the input box,
+.insertBefore(             // and insert the new element before
+$('#newtodo').val('').parent() // the parent <li> of the input box, but first clear the input box.
+)
+);
+$('ul').on('click', // When anthing inside the ul is clicked:
+'li:not(#newtodoli)', // Check if it matches this selector (li without the id "newtodoli") and if it does:
+e => $(e.target)      // Get the element that was clicked,
+.css({'text-decoration': 'line-through', 'animation': 'disappear 1.1s'}) // apply this CSS to it,
+.delay(1000).queue(n => e.target.remove())                               // then after a 1s delay, remove the element.
+);
+```

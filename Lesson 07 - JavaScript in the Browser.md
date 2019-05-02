@@ -461,7 +461,36 @@ function howManyByHowMany(number){
 ### Exercise Answer:
 
 ```javascript
-Will be updated later punks
+var littleOne = [];
+var howTheyMarch = ["one by one", "two by two", "three by three", "four by four", "five by five", "six by six", "seven by seven", "eight by eight", "nine by nine", "ten by ten"];
+
+littleOne[0] = "The little one stops to suck her thumb";
+littleOne[1] = "The little one stops to tie his shoe";
+littleOne[2] = "The little one stops to climb a tree";
+littleOne[3] = "The little one stops to shut the door";
+littleOne[4] = "The little one stops to take a dive";
+littleOne[5] = "The little one stops to pick up sticks";
+littleOne[6] = "The little one stops to pray to heaven";
+littleOne[7] = "The little one stops to roll a skate";
+littleOne[8] = "The little one stops to check the time";
+littleOne[9] = "The little one stops to shut The End";
+
+function theAntsGoMarching(){
+for (var i = 0; i < howTheyMarch.length; i++){
+howManyByHowMany(i);
+console.log(littleOne[i]);
+console.log("And they all go marching down to the ground to get out of the rain, BOOM! BOOM! BOOM!");
+}
+}
+theAntsGoMarching();
+
+function howManyByHowMany(number){
+var numbers = howTheyMarch[number];
+var hurrah = " hurrah, hurrah \n";
+var march = "The ants go marching " + numbers;
+//debugger
+console.log(march + hurrah + march + hurrah + march);
+}
 ```
 
 ## Exercise 3
@@ -522,8 +551,55 @@ console.log("one for the " + littleBoy + " that lives " + whereHeLives);
  
 ![](images/baa.png)
 
-<!--### Exercise Answer -->
+### Exercise Answer 
+```javascript
+var woolOwners = [
+{
+"master": 1
+},
+{
+"dame": 1
+},
+{
+"little boy": 1,
+"location": "down the lane"
+}
+];
 
+var totalBags = 0;
+var haveYouAnyWool = function() {
+for (var i = 0; i < woolOwners.length; i++) {
+totalBags = totalBags + i;
+}
+return (i);
+};
+
+var bags = haveYouAnyWool();
+
+function baabaaBlackSheep() {
+console.log("BaaBaa BlackSheep have you any wool?");
+if (bags > 0) {
+console.log("yes sir, yes sir " + totalBags + " bags full");
+}
+}
+
+function oneForMy() {
+for (var i = 0; i < 2; i++) {
+var people = woolOwners.map(o => Object.keys(o)[0]);
+var person = people[i].toString();
+console.log("one for my " + person);
+}
+}
+
+baabaaBlackSheep();
+oneForMy();
+
+var boy = Object.keys(woolOwners[2])[0];
+var littleBoy = woolOwners[2];
+
+var whereHeLives = littleBoy.location;
+console.log("one for the " + boy + " that lives " + whereHeLives);
+```
 
 	
 - Some scripts with errors that you have to debug

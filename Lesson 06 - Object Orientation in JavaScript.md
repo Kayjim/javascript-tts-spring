@@ -103,7 +103,27 @@ Write a `Particle` constructor function
 
 ## Constructor Exercise Answer
 ```javascript
-console.log("answer here")
+
+function Particle(startX, startY) {
+this.x = startX;
+this.y = startY;
+this.velocity = {x: 0, y: 0};
+}
+
+/*
+class Particle {
+constructor(startX, startY) {
+this.x = startX;
+this.y = startY;
+this.velocity = {x: 0, y: 0};
+}
+}
+*/
+
+var particles = [];
+for(var i = 0; i < 100; i++) {
+particles.push(new Particle(i, Math.random() * 500));
+}
 ```
 
 ## Inheritance (Classical vs Prototypal)
@@ -277,7 +297,62 @@ console.log(g.hasOwnProperty('skillz'),g.hasOwnProperty('computer')) //true,fals
 
 ## Exercise 2: Answer
 ```javascript
-console.log("Please Answer")
+
+time = 0;
+gravity = 0.5;
+
+function Particle(startX, startY) {
+this.x = startX;
+this.y = startY;
+this.velocity = {x: 0, y: 0};
+}
+
+Particle.prototype = {
+getVelocity() {
+return time * gravity;
+},
+move() {
+this.y += this.getVelocity();
+if(this.y < 500) {
+console.log('bottom');
+}
+}
+}
+
+/*
+class Particle {
+constructor(startX, startY) {
+this.x = startX;
+this.y = startY;
+this.velocity = {x: 0, y: 0};
+}
+getVelocity() {
+return time * gravity;
+}
+move() {
+if(this.y < 500) {
+this.y += this.getVelocity();
+} else {
+console.log('bottom');
+}
+}
+}
+*/
+
+var particles = [];
+for(var i = 0; i < 100; i++) {
+particles.push(new Particle(i, Math.random() * 500));
+}
+
+var interval = setInterval(function() {
+time++;
+for(var p of particles) {
+console.log(p.x);
+}
+var falling = particles.filter(p => p.y < 500);
+falling.forEach(p => p.move());
+if(falling.length == 0) clearInterval(interval);
+}, 100);
 
 ```
 
@@ -348,7 +423,48 @@ Let's say you're getting updated user settings from an API, but you don't want t
 ## Exercise 3: Solution
 
 ```javascript
-console.log("You get the idea")
+
+function User(name, address, city, state, zipcode, avatar) {
+this.name = name;
+this.address = address;
+this.city = city;
+this.state = state;
+this.zipcode = zipcode;
+this.avatar = avatar;
+}
+
+User.prototype = {
+getProfileUpdate() {
+return {address: '5678 2nd St', city: 'Charlotte', state: 'NC', zipcode: '28000'};
+},
+updateProfile(update) {
+Object.assign(this, update);
+}
+}
+
+/*
+class User {
+constructor(name, address, city, state, zipcode, avatar) {
+this.name = name;
+this.address = address;
+this.city = city;
+this.state = state;
+this.zipcode = zipcode;
+this.avatar = avatar;
+}
+getProfileUpdate() {
+return {address: '5678 2nd St', city: 'Charlotte', state: 'NC', zipcode: '28000'};
+}
+updateProfile(update) {
+Object.assign(this, update);
+}
+}
+*/
+
+var user = new User('Bob', '1234 Main St', 'Columbia', 'SC', '29000', 'avatar.png');
+console.log(user);
+user.updateProfile(user.getProfileUpdate());
+console.log(user);
 ```
 
 ## Homework

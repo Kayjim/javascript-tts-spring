@@ -65,7 +65,7 @@ getGreeting('Shane'); // 'Hello Shane'
 console.log(greeting) //undefined
 ```
 
-Blocks DO NOT have their own scope
+Blocks do have their own scope when let and const are used.
 
 ```javascript
 for(let i = 0; i < 10; i++) {

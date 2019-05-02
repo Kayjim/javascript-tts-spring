@@ -185,7 +185,16 @@ console.log(myVar); //undefined;
 Exercise Answer:
 
 ```javascript
-console.log("that's rough")
+var superHeroes = [
+["Batman", "Bruce Wayne"],
+["Spiderman", "Peter Parker"],
+["The Flash", "Barry Allen"]
+];
+
+secretIdentity = superHeroes.map(revealArray => `${revealArray[0]} is ${revealArray[1]}`);
+console.log(secretIdentity.join('\n'));
+
+// console.log(superHeroes.map(h => `${h.hero} is ${h.identity}`).join(', '));
 ```
 - - - -
 
@@ -216,7 +225,22 @@ const players = [
 
 ```javascript
 
-console.log("undefined")
+
+const players = [
+{firstName: 'Cam', lastName: 'Newton', position: 'QB', touchdowns: 32},
+{firstName: 'Derek', lastName: 'Anderson', position: 'QB', touchdowns: 0},
+{firstName: 'Jonathan', lastName: 'Stewart', position: 'RB', touchdowns: 12},
+{firstName: 'Mike', lastName: 'Tolbert', position: 'RB', touchdowns: 8},
+{firstName: 'Fozzy', lastName: 'Whittaker', position: 'RB', touchdowns: 3},
+{firstName: 'Ted', lastName: 'Ginn', position: 'WR', touchdowns: 9},
+{firstName: 'Devin', lastName: 'Funchess', position: 'WR', touchdowns: 2}
+];
+
+console.log(players.find(p => p.firstName == 'Mike'));
+console.log(players.filter(p => p.position == 'RB'));
+console.log(players.map(p => p.lastName));
+console.log(players.filter(p => p.position == 'RB' && p.touchdowns > 5).map(p => `${p.firstName} ${p.lastName}`));
+console.log(players.filter(p => p.position == 'RB').reduce((acc, p) => acc + p.touchdowns, 0));
 
 ```
 
@@ -350,13 +374,58 @@ Going back to our slideshow object, let's add some functionality.
 4. Automatically pause the slideshow if it gets to the end of the photolist while playing.
 
 
-<!--## Exercise 3 Answer
+## Exercise 3 Answer
 ```javascript
 
-Update after submissions.
+var slideshow = {
+photoList: [
+'img1.jpg',
+'img2.jpg',
+'img3.jpg'
+],
+currentPhotoIndex: -1,
+nextPhoto: function() {
+if(this.currentPhotoIndex >= this.photoList.length - 1) {
+this.currentPhotoIndex = this.photoList.length;
+console.log('End of slideshow');
+this.pause();
+} else {
+this.currentPhotoIndex++;
+console.log(this.photoList[this.currentPhotoIndex]);
+}
+},
+prevPhoto: function() {
+if(this.currentPhotoIndex <= 0) {
+this.currentPhotoIndex = -1;
+console.log('Beginning of slideshow');
+this.pause();
+} else {
+this.currentPhotoIndex--;
+console.log(this.photoList[this.currentPhotoIndex]);
+}
+},
+getCurrentPhoto: function() {
+return this.photoList[this.currentPhotoIndex]
+},
+playInterval: null,
+play: function() {
+this.pause(); // Added this to allow switching direction at any time.
+this.playInterval = setInterval(this.nextPhoto.bind(this), 2000);
+},
+pause: function() {
+clearInterval(this.playInterval);
+},
+playReverse: function() {
+this.pause();
+this.playInterval = setInterval(this.prevPhoto.bind(this), 2000);
+}
+}
+
+slideshow.play();
+setTimeout(slideshow.playReverse.bind(slideshow), 4500);
 
 ```
--->
+
 
 ## Homework
 - Complete Exercise #3 [Async Programming](https://github.com/Kayjim/javascript-tts-spring/blob/master/Lesson%2005%20-%20Functions%20-%20Part%203.md#exercise-3-async-programming)

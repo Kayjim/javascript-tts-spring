@@ -184,8 +184,27 @@ const section = selectedItem.parentElement.parentElement.nextElementSibling;
 ## Exercise 1 Answer
 
 ```javascript
-TINY VIOLIN
+var header = document.querySelector('header');
+var sections = document.querySelectorAll('section');
+var currentSection = document.querySelector('section.current');
+var currentSibling = currentSection.nextElementSibling;
+var currentPrevH2 = currentSection.previousElementSibling.querySelector('h2');
+// var divWithH2Highlight = document.querySelector('div:has(h2.highlight)');
+// var sectionsWithH2 = document.querySelectorAll('section:has(h2)');
+// :has() is not yet supported :(
+var divWithH2Highlight = document.querySelector('h2.highlight').parentElement.parentElement;
+var sectionsWithH2 = [...document.querySelectorAll('section')].filter(e => e.querySelector('h2') != null);
+// Or Array.from() instead of spread, but spread looks nicer.
+// Or [...document.querySelectorAll('h2')].map(e => e.parentElement)
+//     but that would get parents of h2s that aren't sections if they existed.
 
+console.log(header);
+console.log(sections);
+console.log(currentSection);
+console.log(currentSibling);
+console.log(currentPrevH2);
+console.log(divWithH2Highlight);
+console.log(sectionsWithH2);
 ```
 
 ## Editing a node
@@ -304,8 +323,21 @@ list.appendChild(newLI); //Insert after item 1
 
 ## Exercise 2: Answer
 ```javascript
-NOT YET
+var list = document.querySelector('#list');
+var items = list.children;
+items[1].innerHTML = 'Fair Trade Coffee';
+items[3].remove();
+var cheesewhiz = document.createElement('li');
+cheesewhiz.textContent = 'Cheese Whiz';
+list.appendChild(cheesewhiz);
 
+var arr = ['protein powder', 'muscle milk', 'power bars'];
+[...list.children].forEach(e => e.remove());
+arr.forEach(e => {
+var item = document.createElement('li');
+item.textContent = e;
+list.appendChild(item);
+});
 ```
 
 - Update text of an item
@@ -382,6 +414,56 @@ Let's create a simple todo application
 	- The text from the input box is cleared out.
 - When the user clicks on a list item, it is removed
 - **Extra Credit:** - When a list item is clicked, cross it out, then remove it after 1 second.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<link rel="stylesheet" href="style.css" />
+<title>ToDo</title>
+</head>
+<body>
+<h2>ToDo</h2>
+<ul>
+<li>item 1</li>
+<li>item 2</li>
+<li>item 3</li>
+<li id="newtodoli">
+<input type="text" id="newtodo" />
+<button id="submit">Add</button>
+</li>
+</ul>
+<script src="script.js"></script>
+</body>
+</html>
+```
+```javascript
+function addItem(elm) {
+var item = document.createElement('li');
+item.textContent = elm.value;
+elm.parentElement.parentElement.insertBefore(item, elm.parentElement);
+elm.value = '';
+}
+
+document.querySelector('#newtodo').addEventListener('keyup', e => e.keyCode == 13 ? addItem(e.target) : null);
+document.querySelector('#submit').addEventListener('click', e => addItem(e.target.previousElementSibling));
+document.querySelector('ul').addEventListener('click', e => {
+if(e.target.tagName == 'LI' && e.target.id != 'newtodoli') {
+e.target.style.textDecoration = 'line-through';
+e.target.style.animation = 'disappear 1.1s';
+setTimeout(() => e.target.remove(), 1000);
+}
+});
+```
+```css
+@keyframes disappear {
+from { opacity: 1; }
+to { opacity: 0; }
+}
+```
 
 // - Complete the [CodeSchool jQuery](https://www.codeschool.com/courses/try-jquery) course
 
