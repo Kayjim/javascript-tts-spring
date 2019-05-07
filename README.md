@@ -14,3 +14,4 @@ Each directory has example files from the class on that date.
 |2019-04-25 | 8 | dom manipulation and api  |
 |2019-04-30 | 9 | jquery  |
 |2019-05-02 | 10 | ajax, rest, and promises  |
+|2019-05-07 | 10 | application setup and tdd  |
