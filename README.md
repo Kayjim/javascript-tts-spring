@@ -17,3 +17,4 @@ Each directory has example files from the class on that date.
 |2019-05-07 | 11 | application setup and tdd  |
 |2019-05-09 | 12 | Webpack  |
 |2019-05-11 | 13 | ES2015 part 1  |
+|2019-05-14 | 14 | ES2015 part 2  |
