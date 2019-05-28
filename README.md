@@ -18,5 +18,6 @@ Each directory has example files from the class on that date.
 |2019-05-09 | 12 | Webpack  |
 |2019-05-11 | 13 | ES2015 part 1  |
 |2019-05-14 | 14 | ES2015 part 2  |
-|2019-05-21 | 14 | React part 1  |
-|2019-05-23 | 14 | React part 2  |
+|2019-05-21 | 15 | React part 1  |
+|2019-05-23 | 16 | React part 2  |
+|2019-05-28 | 17 | Firebase |
